@@ -13,6 +13,10 @@ https://docs.djangoproject.com/en/6.0/ref/settings/
 import os
 from pathlib import Path
 
+# Force SQLite - Remove any DATABASE_URL environment variable
+if 'DATABASE_URL' in os.environ:
+    del os.environ['DATABASE_URL']
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
