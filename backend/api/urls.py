@@ -5,7 +5,10 @@ urlpatterns = [
     path("employees/", views.get_employees),
     path("add_employee/", views.add_employee),
 
-    # attendance urls
-    path("add_attendance/", views.add_attendance),
-    path("attendance/", views.get_attendance),
+    path("attendance/", views.add_attendance),   # POST
+    path("get_attendance/", views.get_attendance),  # GET
+
+    path("delete_employee/<int:id>/", views.delete_employee),
+    path("attendance/<int:id>/", views.employee_attendance),
+
 ]
