@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure--s9274i3al_%(5-ylw_v*%!5q63)ol=lc&707c-amj9wha3km1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['hrms-system-1clm.onrender.com']
 CORS_ALLOW_ALL_ORIGINS = True
 
 CSRF_TRUSTED_ORIGINS = [
