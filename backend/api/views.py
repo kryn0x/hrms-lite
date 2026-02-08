@@ -28,7 +28,7 @@ def add_employee(request):
             return JsonResponse({"error": "All fields are required"}, status=400)
         
         # email format validation
-        email_pattern = r'^[\w\.-]+@[\w\.-]+\.\w+$'
+        email_pattern = r'^[\w\.-]+@[\w\.-]+\.\w+$'$'
         if not re.match(email_pattern, email):
             return JsonResponse({"error": "Invalid email format"}, status=400)
 
