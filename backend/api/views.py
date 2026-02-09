@@ -1,10 +1,8 @@
 from django.http import JsonResponse
 from .models import Employee, Attendance
-from .models import Employee
 import json
 import re
 from django.views.decorators.csrf import csrf_exempt
-from django.utils.decorators import method_decorator
 
 
 # get all employees
@@ -28,7 +26,7 @@ def add_employee(request):
             return JsonResponse({"error": "All fields are required"}, status=400)
         
         # email format validation
-        email_pattern = r'^[\w\.-]+@[\w\.-]+\.\w+$'$'
+        email_pattern = r'^[\w\.-]+@[\w\.-]+\.\w+$'
         if not re.match(email_pattern, email):
             return JsonResponse({"error": "Invalid email format"}, status=400)
 
@@ -95,4 +93,3 @@ def employee_attendance(request, id):
         })
 
     return JsonResponse(data, safe=False)
-
