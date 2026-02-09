@@ -60,7 +60,7 @@ const addEmployee = () => {
     return;
   }
 
-fetch("http://127.0.0.1:8000/api/add_employee/",{
+fetch(`${API}/add_employee/`,{
   method:"POST",
   headers:{"Content-Type":"application/json"},
   body:JSON.stringify(empForm)
@@ -407,7 +407,7 @@ onClick={()=>{
   setViewName(emp.name);
   setShowViewDropdown(false);
 
-  fetch(`http://127.0.0.1:8000/api/attendance/${emp.id}`)
+  fetch(`${API}/attendance/${emp.id}`)
   .then(res=>res.json())
   .then(data=>{
     setHistory(data);
