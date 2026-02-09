@@ -30,12 +30,17 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure--s9274i3al_%(5-ylw_v*
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
-ALLOWED_HOSTS = ['*']  # Allow all hosts for deployment
+ALLOWED_HOSTS = [
+    'hrms-lite-2mfo.onrender.com',
+    'localhost',
+    '127.0.0.1',
+    '*'
+]
 
 CORS_ALLOW_ALL_ORIGINS = True
 
 CSRF_TRUSTED_ORIGINS = [
-    "https://hrms-system-1clm.onrender.com",
+    "https://hrms-lite-2mfo.onrender.com",
     "http://localhost:3000",
     "http://127.0.0.1:3000"
 ]

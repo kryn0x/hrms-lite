@@ -29,7 +29,7 @@ function App() {
     other_reason: ""
   });
 
-  const API = "http://127.0.0.1:8000/api";
+  const API = "https://hrms-lite-2mfo.onrender.com/api";
 
   const showToast = (message, type = "success") => {
     setToast({ show: true, message, type });
