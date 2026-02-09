@@ -4,8 +4,6 @@ import "./App.css";
 
 function App() {
   const [employees, setEmployees] = useState([]);
-  const [attendance, setAttendance] = useState([]);
-  const [selectedEmployees, setSelectedEmployees] = useState([]);
   const [viewName,setViewName]=useState("");
   const [history,setHistory]=useState([]);
   const [showViewDropdown, setShowViewDropdown]=useState(false);
@@ -44,15 +42,8 @@ function App() {
       .then(data => setEmployees(data));
   };
 
-  const loadAttendance = () => {
-    fetch(`${API}/get_attendance/`)
-      .then(res => res.json())
-      .then(data => setAttendance(data));
-  };
-
   useEffect(() => {
     loadEmployees();
-    loadAttendance();
   }, []);
 
 const addEmployee = () => {
@@ -129,7 +120,6 @@ const markAttendance = () => {
   .then(()=>{
     showToast("Attendance marked successfully!");
     setAttForm({emp_id:"", date:"", status:"", search:"", other_reason:""});
-    loadAttendance();
   })
   .catch((err)=>{
     console.error(err);
