@@ -227,7 +227,7 @@ return (
         marginTop:"40px"
       }}>Attendance</h2>
       <input
-      placeholder="Type employee name..."
+      placeholder="Type employee ID or name..."
       value={attForm.search || ""}
       onChange={(e)=>{
         const value = e.target.value;
@@ -246,7 +246,8 @@ return (
       }}>
         {employees
           .filter(emp =>
-            emp.name.toLowerCase().includes(attForm.search.toLowerCase())
+            emp.name.toLowerCase().includes(attForm.search.toLowerCase()) ||
+            emp.emp_id.toLowerCase().includes(attForm.search.toLowerCase())
         )
         .map(emp=>(
           <div key={emp.id}
@@ -255,10 +256,10 @@ return (
             setAttForm({
               ...attForm,
               emp_id:emp.id,
-              search:`${emp.name} - ${emp.emp_id}`
+              search:`${emp.emp_id} - ${emp.name}`
           });
         }}>
-          {emp.name} - {emp.emp_id}
+          {emp.emp_id} - {emp.name}
         </div>
       ))}
   </div>
@@ -359,7 +360,7 @@ return (
 
 <div style={{position:"relative"}}>
 <input
-placeholder="Type employee name..."
+placeholder="Type employee ID or name..."
 value={viewName || ""}
 onChange={(e)=>{
   const value = e.target.value;
@@ -380,7 +381,10 @@ marginTop:"10px"
 }}
 />
 
-{viewName && showViewDropdown && employees.filter(emp=>emp.name.toLowerCase().includes(viewName.toLowerCase())).length > 0 && (
+{viewName && showViewDropdown && employees.filter(emp=>
+  emp.name.toLowerCase().includes(viewName.toLowerCase()) ||
+  emp.emp_id.toLowerCase().includes(viewName.toLowerCase())
+).length > 0 && (
 <div style={{
 background:"#fff",
 border:"1px solid #ccc",
@@ -392,7 +396,10 @@ zIndex:10,
 boxShadow:"0 2px 8px rgba(0,0,0,0.15)"
 }}>
 {employees
-.filter(emp=>emp.name.toLowerCase().includes(viewName.toLowerCase()))
+.filter(emp=>
+  emp.name.toLowerCase().includes(viewName.toLowerCase()) ||
+  emp.emp_id.toLowerCase().includes(viewName.toLowerCase())
+)
 .map(emp=>(
 <div key={emp.id}
 style={{
@@ -404,7 +411,7 @@ style={{
 onMouseEnter={(e)=>e.currentTarget.style.background="#f5f5f5"}
 onMouseLeave={(e)=>e.currentTarget.style.background="white"}
 onClick={()=>{
-  setViewName(emp.name);
+  setViewName(`${emp.emp_id} - ${emp.name}`);
   setShowViewDropdown(false);
 
   fetch(`${API}/attendance/${emp.id}`)
@@ -418,7 +425,7 @@ onClick={()=>{
     alert("Error loading attendance history");
   });
 }}>
-{emp.name} - {emp.emp_id}
+{emp.emp_id} - {emp.name}
 </div>
 ))}
 </div>
