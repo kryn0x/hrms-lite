@@ -32,15 +32,16 @@ DEBUG = os.environ.get('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = [
     'hrms-lite-2mfo.onrender.com',
+    'hrms-lite-frontend-omega.vercel.app',
     'localhost',
     '127.0.0.1',
-    '*'
 ]
 
 CORS_ALLOW_ALL_ORIGINS = True
 
 CSRF_TRUSTED_ORIGINS = [
     "https://hrms-lite-2mfo.onrender.com",
+    "https://hrms-lite-frontend-omega.vercel.app",
     "http://localhost:3000",
     "http://127.0.0.1:3000"
 ]
